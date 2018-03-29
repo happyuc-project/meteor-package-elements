@@ -1,4 +1,4 @@
-# Ethereum elements
+# Happyuc elements
 
 A collection of basic Meteor templates/components to make dapps faster to build.
 
@@ -16,11 +16,11 @@ The following elements can be use anywhere in your dapp.
 
 Additionally this package exposes the following packages:
 
-* [ethereum:tools](https://atmospherejs.com/ethereum/tools), which gives you `EthTools`.
+* [ethereum:tools](https://atmospherejs.com/ethereum/tools), which gives you `HucTools`.
 * [frozeman:template-var](https://atmospherejs.com/frozeman/template-var), which gives you the `TemplateVar.set()/.get()` functions which can be used to get values from the select account, or address input element.
 
 Note that these packages will only be exposed to your client part of your dapp,
-if you want to use e.g. `EthTools` on the server side add the package manually using `$ meteor add ethereum:tools`.
+if you want to use e.g. `HucTools` on the server side add the package manually using `$ meteor add ethereum:tools`.
 
 ---
 
@@ -196,7 +196,7 @@ TemplateVar.getFrom('.my-container-element .dapp-select-account', 'value');
 
 This element allows you users to adjust the fee (gas \* gas price) of a transaction, and gives you back either the `gasInWei` or the selected `gasPrice`.
 
-You need to provide a gas estimation which you can get using e.g. `web3.eth.estimateGas({from: .., to: .., data: ..})` or `myContract.myMethod.estimateGas({from: ..})`
+You need to provide a gas estimation which you can get using e.g. `webu.huc.estimateGas({from: .., to: .., data: ..})` or `myContract.myMethod.estimateGas({from: ..})`
 and the tool will display whats the current medium gas price based on the given `gasPrice` \* your gas usage estimation.
 
 The user then can adjust the fee up and down by a factor of ~1.8.
@@ -207,7 +207,7 @@ _Hint_: To get the gas price reactivly you can use the [ethereum:blocks](https:/
 {{> dapp_selectGasPrice gas=21000 gasPrice=50000000000 unit="ether"}}
 ```
 
-_Note_: If you don't set the `unit` property it will use `EthTools.getUnit()`, like the `{{> dapp_formatBalance}}` element.
+_Note_: If you don't set the `unit` property it will use `HucTools.getUnit()`, like the `{{> dapp_formatBalance}}` element.
 
 **Getting values reactively**
 

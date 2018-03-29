@@ -39,20 +39,20 @@ Template["dapp_selectAccount"].helpers({
     return TemplateVar.get("value") === this.address ? { selected: true } : {};
   },
   /**
-    Check if the current selected unit is not ether
+    Check if the current selected unit is not hucer
 
-    @method (isNotEtherUnit)
+    @method (isNotHucerUnit)
     */
-  isNotEtherUnit: function() {
-    return EthTools.getUnit().toLowerCase() !== "ether";
+  isNotHucerUnit: function() {
+    return HucTools.getUnit().toLowerCase() !== "hucer";
   },
   /**
-    Check if the current selected unit is not ether
+    Check if the current selected unit is not hucer
 
-    @method (isNotEtherUnit)
+    @method (isNotHucerUnit)
     */
   isAddress: function() {
-    return web3.utils.isAddress(TemplateVar.get("value"));
+    return webu.utils.isAddress(TemplateVar.get("value"));
   }
 });
 

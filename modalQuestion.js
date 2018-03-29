@@ -75,7 +75,7 @@ Template["dapp_modal_question"].events({
     */
   "click .dapp-modal-buttons button.ok": function(e) {
     // hide the modal
-    EthElements.Modal.hide();
+    HucElements.Modal.hide();
 
     if (_.isFunction(this.ok)) {
       this.ok();
@@ -88,7 +88,7 @@ Template["dapp_modal_question"].events({
     */
   "click .dapp-modal-buttons button.cancel": function(e) {
     // hide the modal
-    EthElements.Modal.hide();
+    HucElements.Modal.hide();
 
     if (_.isFunction(this.cancel)) this.cancel();
   }

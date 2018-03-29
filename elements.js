@@ -5,13 +5,13 @@ Template Controllers
 */
 
 /**
-Helper elements for ethereum dapps
+Helper elements for happyuc dapps
 
-@class [packages] ethereum:elements
+@class [packages] happyuc:elements
 @constructor
 */
 
-EthElements = {
+HucElements = {
   Modal: {
     _current: new ReactiveVar(),
     /**
@@ -48,7 +48,7 @@ EthElements = {
         @param {Object} options the options for the modal like `{closeable: true, closePath: '/dahsboard'}`
         */
     question: function(data, options) {
-      EthElements.Modal.show(
+      HucElements.Modal.show(
         {
           template: "dapp_modal_question",
           data: data

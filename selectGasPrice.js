@@ -82,7 +82,7 @@ Template["dapp_selectGasPrice"].helpers({
       );
 
       // return the fee
-      return EthTools.formatBalance(
+      return HucTools.formatBalance(
         calculateGasInWei(template, this.gas, this.gasPrice).toString(10),
         "0,0.[000000000000000000]",
         this.unit
@@ -95,7 +95,7 @@ Template["dapp_selectGasPrice"].helpers({
     @method (unit)
     */
   unit: function() {
-    var unit = this.unit || EthTools.getUnit();
+    var unit = this.unit || HucTools.getUnit();
     if (unit) return unit.toUpperCase();
   },
   /**

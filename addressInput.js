@@ -5,7 +5,7 @@ Template Controllers
 */
 
 var sha3 = function(str, opt) {
-  return "0x" + web3.utils.sha3(str, opt).replace("0x", "");
+  return "0x" + webu.utils.sha3(str, opt).replace("0x", "");
 };
 
 function namehash(name) {
@@ -297,7 +297,7 @@ var resolverContractAbi = [
 var ensAddress = "0x314159265dd8dbb310642f98f50c066173c1259b";
 
 function getAddr(name, ens, callback) {
-  var resolverContract = new web3.eth.Contract(resolverContractAbi);
+  var resolverContract = new webu.huc.Contract(resolverContractAbi);
 
   var node = namehash(name);
   // get a resolver address for that name
@@ -321,7 +321,7 @@ function getAddr(name, ens, callback) {
 }
 
 function getName(address, ens, callback) {
-  var resolverContract = new web3.eth.Contract(resolverContractAbi);
+  var resolverContract = new webu.huc.Contract(resolverContractAbi);
   var node = namehash(
     address.toLowerCase().replace("0x", "") + ".addr.reverse"
   );
@@ -363,7 +363,7 @@ Template.dapp_addressInput.onCreated(function() {
     TemplateVar.set("value", this.data.value);
   }
 
-  var ensContract = new web3.eth.Contract(ensContractAbi, ensAddress);
+  var ensContract = new webu.huc.Contract(ensContractAbi, ensAddress);
 
   if (ensContract) {
     TemplateVar.set(template, "ensContract", ensContract);
@@ -372,10 +372,10 @@ Template.dapp_addressInput.onCreated(function() {
     TemplateVar.set(template, "ensAvailable", false);
   }
 
-  web3.eth.isSyncing(function(err, syncing) {
+  webu.huc.isSyncing(function(err, syncing) {
     if (!err && !syncing) {
       // cannot use ENS while syncing
-      web3.eth.getCode(ensAddress, function(err, code) {
+      webu.huc.getCode(ensAddress, function(err, code) {
         if (!err && code.length > 2) {
           // check if there's code on the address
           TemplateVar.set(template, "ensAvailable", true);
@@ -403,7 +403,7 @@ Template.dapp_addressInput.helpers({
     // if(Template.instance().view.isRendered && Template.instance().find('input').value !== address)
     // Template.instance().$('input').trigger('change');
 
-    return _.isString(address) && web3.utils.isAddress(address)
+    return _.isString(address) && webu.utils.isAddress(address)
       ? "0x" + address.replace("0x", "")
       : false;
   },
@@ -468,12 +468,12 @@ Template.dapp_addressInput.events({
       value = "0x" + value;
     }
 
-    if (web3.utils.isAddress(value) || _.isEmpty(value)) {
+    if (webu.utils.isAddress(value) || _.isEmpty(value)) {
       TemplateVar.set("isValid", true);
 
       if (!_.isEmpty(value)) {
         TemplateVar.set("value", "0x" + value.replace("0x", ""));
-        TemplateVar.set("isChecksum", web3.utils.checkAddressChecksum(value));
+        TemplateVar.set("isChecksum", webu.utils.checkAddressChecksum(value));
 
         if (TemplateVar.get("ensAvailable")) {
           var ens = TemplateVar.get("ensContract");
@@ -486,8 +486,8 @@ Template.dapp_addressInput.events({
               TemplateVar.set(template, "ensName", name);
               TemplateVar.set(template, "isValid", true);
               TemplateVar.set(template, "isChecksum", true);
-              TemplateVar.set(template, "value", web3.toChecksumAddress(addr));
-              e.currentTarget.value = web3.toChecksumAddress(addr);
+              TemplateVar.set(template, "value", webu.toChecksumAddress(addr));
+              e.currentTarget.value = webu.toChecksumAddress(addr);
             });
           });
         }
@@ -498,7 +498,7 @@ Template.dapp_addressInput.events({
 
       e.currentTarget.value = value;
     } else if (TemplateVar.get("ensAvailable")) {
-      if (value.slice(-4) !== ".eth") value = value + ".eth";
+      if (value.slice(-4) !== ".huc") value = value + ".huc";
 
       TemplateVar.set("hasName", false);
       TemplateVar.set("isValid", false);
@@ -509,9 +509,9 @@ Template.dapp_addressInput.events({
         TemplateVar.set(template, "hasName", true);
         TemplateVar.set(template, "isValid", true);
         TemplateVar.set(template, "isChecksum", true);
-        TemplateVar.set(template, "value", web3.utils.toChecksumAddress(addr));
+        TemplateVar.set(template, "value", webu.utils.toChecksumAddress(addr));
         TemplateVar.set(template, "ensName", value);
-        // e.currentTarget.value = web3.utils.toChecksumAddress(addr);
+        // e.currentTarget.value = webu.utils.toChecksumAddress(addr);
         // check name
         getName(addr, ens, function(name) {
           TemplateVar.set(template, "ensName", name);

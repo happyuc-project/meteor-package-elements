@@ -1,7 +1,7 @@
 extends: eslint-config-es5
 
 globals:
-  web3: true
+  webu: true
   TemplateVar: true
   Template: true
   _: true

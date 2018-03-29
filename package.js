@@ -1,8 +1,8 @@
 Package.describe({
-  name: "ethereum:elements",
+  name: "happyuc:elements",
   summary: "Basic elements for Dapps",
   version: "1.1.0",
-  git: "http://github.com/ethereum/meteor-package-elements"
+  git: "http://github.com/happyuc-project/meteor-package-elements"
 });
 
 Package.onUse(function(api) {
@@ -18,16 +18,16 @@ Package.onUse(function(api) {
   api.use("3stack:bignumber@2.0.0", "client");
   // api.use('underscorestring:underscore.string@3.1.1', 'client');
 
-  api.use("ethereum:web3@1.0.0-beta.33", "client");
-  api.use("ethereum:tools@1.0.0", "client");
+  api.use("happyuc:webu@1.0.0", "client");
+  api.use("happyuc:tools@1.0.0", "client");
   api.use("frozeman:animation-helper@0.2.5", "client");
   api.use("frozeman:storage@0.1.8", "client");
   api.use("frozeman:template-var@1.2.2", "client");
 
   // provide packages for the app developer as well
-  api.imply(["frozeman:template-var", "ethereum:tools"], "client");
+  api.imply(["frozeman:template-var", "happyuc:tools"], "client");
 
-  api.export(["EthElements"], "client");
+  api.export(["HucElements"], "client");
 
   api.addAssets("identicon-load.gif", "client");
 
@@ -36,7 +36,7 @@ Package.onUse(function(api) {
   api.addFiles("elements.import.less", "client");
   api.addFiles("main.less", "client");
 
-  api.addFiles("ethelements.js", "client");
+  api.addFiles("elements.js", "client");
 
   api.addFiles("identicon.html", "client");
   api.addFiles("identicon.js", "client");
@@ -67,6 +67,6 @@ Package.onUse(function(api) {
 
 // Package.onTest(function(api) {
 //   api.use('tinytest');
-//   api.use('ethereum:elements');
+//   api.use('happyuc:elements');
 //   api.addFiles('elements-tests.js');
 // });

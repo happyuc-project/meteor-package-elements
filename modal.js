@@ -20,7 +20,7 @@ Template["dapp_modalPlaceholder"].helpers({
     @method (modalTemplate)
     */
   modalTemplate: function() {
-    return EthElements.Modal._current.get() ? "dapp_modal" : false;
+    return HucElements.Modal._current.get() ? "dapp_modal" : false;
   },
   /**
     The modal templates data, set manualy
@@ -28,7 +28,7 @@ Template["dapp_modalPlaceholder"].helpers({
     @method (modalData)
     */
   modalData: function() {
-    return EthElements.Modal._current.get();
+    return HucElements.Modal._current.get();
   }
 });
 
@@ -78,7 +78,7 @@ Template["dapp_modal"].events({
         if (typeof Router !== "undefined") Router.go(template.data.closePath);
         if (typeof FlowRouter !== "undefined")
           FlowRouter.go(template.data.closePath);
-      } else EthElements.Modal.hide();
+      } else HucElements.Modal.hide();
     }
   }
 });
