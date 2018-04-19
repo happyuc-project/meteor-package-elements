@@ -39,20 +39,20 @@ Template["dapp_selectAccount"].helpers({
     return TemplateVar.get("value") === this.address ? { selected: true } : {};
   },
   /**
-    Check if the current selected unit is not hucer
+    Check if the current selected unit is not huc
 
     @method (isNotHucerUnit)
     */
   isNotHucerUnit: function() {
-    return HucTools.getUnit().toLowerCase() !== "hucer";
+    return HucTools.getUnit().toLowerCase() !== "huc";
   },
   /**
-    Check if the current selected unit is not hucer
+    Check if the current selected unit is not huc
 
     @method (isNotHucerUnit)
     */
   isAddress: function() {
-    return webu.utils.isAddress(TemplateVar.get("value"));
+    return webu.isAddress(TemplateVar.get("value"));
   }
 });
 

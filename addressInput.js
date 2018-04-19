@@ -5,7 +5,7 @@ Template Controllers
 */
 
 var sha3 = function(str, opt) {
-  return "0x" + webu.utils.sha3(str, opt).replace("0x", "");
+  return "0x" + webu.sha3(str, opt).replace("0x", "");
 };
 
 function namehash(name) {
@@ -403,7 +403,7 @@ Template.dapp_addressInput.helpers({
     // if(Template.instance().view.isRendered && Template.instance().find('input').value !== address)
     // Template.instance().$('input').trigger('change');
 
-    return _.isString(address) && webu.utils.isAddress(address)
+    return _.isString(address) && webu.isAddress(address)
       ? "0x" + address.replace("0x", "")
       : false;
   },
@@ -468,12 +468,12 @@ Template.dapp_addressInput.events({
       value = "0x" + value;
     }
 
-    if (webu.utils.isAddress(value) || _.isEmpty(value)) {
+    if (webu.isAddress(value) || _.isEmpty(value)) {
       TemplateVar.set("isValid", true);
 
       if (!_.isEmpty(value)) {
         TemplateVar.set("value", "0x" + value.replace("0x", ""));
-        TemplateVar.set("isChecksum", webu.utils.checkAddressChecksum(value));
+        TemplateVar.set("isChecksum", webu.checkAddressChecksum(value));
 
         if (TemplateVar.get("ensAvailable")) {
           var ens = TemplateVar.get("ensContract");
@@ -509,9 +509,9 @@ Template.dapp_addressInput.events({
         TemplateVar.set(template, "hasName", true);
         TemplateVar.set(template, "isValid", true);
         TemplateVar.set(template, "isChecksum", true);
-        TemplateVar.set(template, "value", webu.utils.toChecksumAddress(addr));
+        TemplateVar.set(template, "value", webu.toChecksumAddress(addr));
         TemplateVar.set(template, "ensName", value);
-        // e.currentTarget.value = webu.utils.toChecksumAddress(addr);
+        // e.currentTarget.value = webu.toChecksumAddress(addr);
         // check name
         getName(addr, ens, function(name) {
           TemplateVar.set(template, "ensName", name);
