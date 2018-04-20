@@ -265,9 +265,7 @@ function getAddr(name, ens, callback) {
 
 function getName(address, ens, callback) {
   var resolverContract = new webu.huc.Contract(resolverContractAbi);
-  var node = namehash(
-      address.toLowerCase().replace('0x', '') + '.addr.reverse',
-  );
+  var node = namehash(address.toLowerCase().replace('0x', '') + '.addr.reverse');
 
   // get a resolver address for that name
   ens.methods.resolver(node).call(function(error, resolverAddress) {
@@ -402,7 +400,6 @@ Template.dapp_addressInput.events({
         /^[0-9a-f]+$/.test(value.toLowerCase())
     ) value = '0x' + value;
 
-    var ens;
     if (webu.isAddress(value) || _.isEmpty(value)) {
       TemplateVar.set('isValid', true);
 
@@ -411,7 +408,7 @@ Template.dapp_addressInput.events({
         TemplateVar.set('isChecksum', webu.checkAddressChecksum(value));
 
         if (TemplateVar.get('ensAvailable')) {
-          ens = TemplateVar.get('ensContract');
+          var ens = TemplateVar.get('ensContract');
 
           // if an address was added, check if there's a name associated with it
           getName(value, ens, function(name) {
@@ -438,7 +435,7 @@ Template.dapp_addressInput.events({
       TemplateVar.set('hasName', false);
       TemplateVar.set('isValid', false);
       TemplateVar.set('value', undefined);
-      ens = TemplateVar.get('ensContract');
+      var ens = TemplateVar.get('ensContract');
 
       getAddr(value, ens, function(addr) {
         TemplateVar.set(template, 'hasName', true);

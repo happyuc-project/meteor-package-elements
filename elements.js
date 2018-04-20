@@ -48,13 +48,7 @@ HucElements = {
      @param {Object} options the options for the modal like `{closeable: true, closePath: '/dahsboard'}`
      */
     question: function(data, options) {
-      HucElements.Modal.show(
-          {
-            template: 'dapp_modal_question',
-            data    : data,
-          },
-          options,
-      );
+      HucElements.Modal.show({template: 'dapp_modal_question', data: data}, options);
     },
   },
 };
