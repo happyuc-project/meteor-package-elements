@@ -1,7 +1,7 @@
 Package.describe({
   name   : 'happyuc:elements',
   summary: 'Basic elements for Dapps',
-  version: '1.1.8',
+  version: '1.1.10',
   git    : 'http://github.com/happyuc-project/meteor-package-elements',
 });
 
@@ -14,12 +14,12 @@ Package.onUse(function(api) {
   api.use('less', 'client');
   api.use('standard-minifiers', 'client');
   api.use('alexvandesande:identicon@2.0.2', 'client');
-  api.use('3stack:bignumber@4.0.2', 'client');
+  api.use('3stack:bignumber@2.0.7', 'client');
   api.use('frozeman:animation-helper@0.2.5', 'client');
   api.use('frozeman:storage@0.1.8', 'client');
   api.use('frozeman:template-var@1.2.2', 'client');
   api.use('happyuc:webu@1.0.5', 'client');
-  api.use('happyuc:tools@1.1.3', 'client');
+  api.use('happyuc:tools@1.1.4', 'client');
 
   // provide packages for the app developer as well
   api.imply(['frozeman:template-var', 'happyuc:tools'], 'client');

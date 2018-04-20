@@ -33,7 +33,7 @@ var createTemplateDataFromInput = function(input) {
   input.typeShort = input.typeShort[0];
   input.bits = input.type.replace(input.typeShort, '');
   input.displayName = input.name.replace(/([A-Z])/g, ' $1').replace(
-      /([\-\_])/g,
+      /([\-_])/g,
       '&thinsp;<span class="punctuation">$1</span>&thinsp;',
   );
 
@@ -104,11 +104,11 @@ Template['dapp_output'].helpers({
 
     if (type === 'bool') {
       var spanClass = value === 'true' ? 'check' : 'ban';
-      return new Spacebars.SafeString(`<span class="icon icon-${spanClass}"></span>`);
+      return new Spacebars.SafeString('<span class="icon icon-' + spanClass + '"></span>');
     } else if (type.indexOf('int') > 0) {
       var data = parseInt(value, 10);
       if (data > 1400000000 && data < 1800000000 && Math.floor(data / 1000) !== data / 1000) {
-        return `(${moment(data * 1000).fromNow()})`;
+        return '(' + moment(data * 1000).fromNow() + ')';
       }
     } else if (type.indexOf('bytes') > 0) {
       var returnData = '';
