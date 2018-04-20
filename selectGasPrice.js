@@ -64,21 +64,14 @@ Template['dapp_selectGasPrice'].helpers({
       var template = Template.instance();
 
       // set the value
-      TemplateVar.set(
-          'gasInWei',
-          calculateGasInWei(template, this.gas, this.gasPrice).floor().toString(10),
-      );
-      TemplateVar.set(
-          'gasPrice',
-          calculateGasInWei(template, this.gas, this.gasPrice, true).floor().toString(10),
-      );
+      TemplateVar.set('gasInWei', calculateGasInWei(template, this.gas, this.gasPrice).floor().toString(10));
+      TemplateVar.set('gasPrice', calculateGasInWei(template, this.gas, this.gasPrice, true).floor().toString(10));
 
       // return the fee
       return HucTools.formatBalance(
           calculateGasInWei(template, this.gas, this.gasPrice).toString(10),
           '0,0.[000000000000000000]',
-          this.unit,
-      );
+          this.unit);
     }
   },
   /**
