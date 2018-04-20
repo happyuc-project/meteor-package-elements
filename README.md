@@ -334,13 +334,13 @@ EthElements.Modal.question({
 #### Close question modal
 
 ```js
-EthElements.Modal.hide();
+HucElements.Modal.hide();
 ```
 
 Additional you can pass the same options as the modal as the second parameter:
 
 ```js
-EthElements.Modal.question(
+HucElements.Modal.question(
   {
     text: "Alright?",
     ok: function() {

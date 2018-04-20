@@ -1,68 +1,68 @@
 /**
-Template Controllers
+ Template Controllers
 
-@module Templates
-*/
+ @module Templates
+ */
 
 /**
-The select account template
+ The select account template
 
-@class [template] dapp_selectAccount
-@constructor
-*/
+ @class [template] dapp_selectAccount
+ @constructor
+ */
 
-Template["dapp_selectAccount"].onCreated(function() {
+Template['dapp_selectAccount'].onCreated(function() {
   if (this.data) {
     if (this.data.value) {
-      TemplateVar.set("value", this.data.value);
+      TemplateVar.set('value', this.data.value);
     } else if (this.data.accounts && this.data.accounts[0]) {
-      TemplateVar.set("value", this.data.accounts[0].address);
+      TemplateVar.set('value', this.data.accounts[0].address);
     }
   }
 });
 
-Template["dapp_selectAccount"].helpers({
+Template['dapp_selectAccount'].helpers({
   /**
-    Check if its a normal account
+   Check if its a normal account
 
-    @method (isAccount)
-    */
-  isAccount: function() {
-    return this.type === "account" && Template.parentData(1).showAccountTypes;
+   @method (isAccount)
+   */
+  isAccount     : function() {
+    return this.type === 'account' && Template.parentData(1).showAccountTypes;
   },
   /**
-    Return the selected attribute if its selected
+   Return the selected attribute if its selected
 
-    @method (selected)
-    */
-  selected: function() {
-    return TemplateVar.get("value") === this.address ? { selected: true } : {};
+   @method (selected)
+   */
+  selected      : function() {
+    return TemplateVar.get('value') === this.address ? {selected: true} : {};
   },
   /**
-    Check if the current selected unit is not huc
+   Check if the current selected unit is not huc
 
-    @method (isNotHucerUnit)
-    */
+   @method (isNotHucerUnit)
+   */
   isNotHucerUnit: function() {
-    return HucTools.getUnit().toLowerCase() !== "huc";
+    return HucTools.getUnit().toLowerCase() !== 'huc';
   },
   /**
-    Check if the current selected unit is not huc
+   Check if the current selected unit is not huc
 
-    @method (isNotHucerUnit)
-    */
-  isAddress: function() {
-    return webu.isAddress(TemplateVar.get("value"));
-  }
+   @method (isNotHucerUnit)
+   */
+  isAddress     : function() {
+    return webu.isAddress(TemplateVar.get('value'));
+  },
 });
 
-Template["dapp_selectAccount"].events({
+Template['dapp_selectAccount'].events({
   /**
-    Set the selected address.
-    
-    @event change select
-    */
-  "change select": function(e) {
-    TemplateVar.set("value", e.currentTarget.value);
-  }
+   Set the selected address.
+
+   @event change select
+   */
+  'change select': function(e) {
+    TemplateVar.set('value', e.currentTarget.value);
+  },
 });
