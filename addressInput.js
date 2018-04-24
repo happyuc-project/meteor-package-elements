@@ -248,7 +248,7 @@ var resolverContractAbi = [
 var ensAddress = '0x314159265dd8dbb310642f98f50c066173c1259b';
 
 function getAddr(name, ens, callback) {
-  var resolverContract = new webu.huc.Contract(resolverContractAbi);
+  var resolverContract = new webu.huc.contract(resolverContractAbi);
 
   var node = namehash(name);
   // get a resolver address for that name
@@ -264,7 +264,7 @@ function getAddr(name, ens, callback) {
 }
 
 function getName(address, ens, callback) {
-  var resolverContract = new webu.huc.Contract(resolverContractAbi);
+  var resolverContract = new webu.huc.contract(resolverContractAbi);
   var node = namehash(address.toLowerCase().replace('0x', '') + '.addr.reverse');
 
   // get a resolver address for that name
@@ -302,7 +302,7 @@ Template.dapp_addressInput.onCreated(function() {
     TemplateVar.set('value', this.data.value);
   }
 
-  var ensContract = new webu.huc.Contract(ensContractAbi, ensAddress);
+  var ensContract = new webu.huc.contract(ensContractAbi, ensAddress);
 
   if (ensContract) {
     TemplateVar.set(template, 'ensContract', ensContract);

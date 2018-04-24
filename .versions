@@ -32,9 +32,9 @@ frozeman:persistent-minimongo@0.1.8
 frozeman:storage@0.1.9
 frozeman:template-var@1.2.2
 geojson-utils@1.0.10
-happyuc:elements@1.2.1
-happyuc:tools@1.1.5
-happyuc:webu@1.0.5
+happyuc:elements@1.2.2
+happyuc:tools@1.1.6
+happyuc:webu@1.0.8
 html-tools@1.0.5
 htmljs@1.0.5
 http@1.4.0
