@@ -1,65 +1,27 @@
-/**
- Template Controllers
-
- @module Templates
- */
-
-/**
- Return the user identity icon
-
- @class [template] dapp_identicon
- @constructor
- */
-
-/**
- The cached identicons
-
- @property cache
- */
 var cache = {};
 
 Template['dapp_identicon'].helpers({
-  /**
-   Make sure the identity is lowercased
+    identity          : function(identity) {
+        return _.isString(this.identity)
+            ? this.identity.toLowerCase()
+            : this.identity;
+    },
+    identiconData     : function(identity) {
+        // remove items if the cache is larger than 50 entries
+        if (_.size(cache) > 100) delete cache[Object.keys(cache)[0]];
 
-   @method (identity)
-   */
-  identity          : function(identity) {
-    return _.isString(this.identity)
-        ? this.identity.toLowerCase()
-        : this.identity;
-  },
-  /**
-   Return the cached or generated identicon
-
-   @method (identiconData)
-   */
-  identiconData     : function(identity) {
-    // remove items if the cache is larger than 50 entries
-    if (_.size(cache) > 100) delete cache[Object.keys(cache)[0]];
-
-    var cacheId = cache['ID_' + identity];
-    return cacheId ? cacheId : cache['ID_' + identity] = hqx(hqx(blockies.create({seed: identity, size: 8, scale: 1}), 4), 4).toDataURL();
-  },
-  /**
-   Return the cached or generated identicon
-
-   @method (identiconDataPixel)
-   */
-  identiconDataPixel: function(identity) {
-    var cacheIdp = cache['IDP_' + identity];
-    return cacheIdp ? cacheIdp : cache['IDP_' + identity] = blockies.create({seed: identity, size: 8, scale: 8}).toDataURL();
-  },
-  /**
-   Get the correct text, if TAPi18n is available.
-
-   @method i18nText
-   */
-  i18nTextIcon      : function() {
-    if (typeof TAPi18n === 'undefined' || TAPi18n.__('elements.identiconHelper') === 'elements.identiconHelper') {
-      return 'This is a security icon, if there\'s any change on the address the resulting icon should be a completelly different one';
-    } else {
-      return TAPi18n.__('elements.identiconHelper');
-    }
-  },
+        var cacheId = cache['ID_' + identity];
+        return cacheId
+            ? cacheId
+            : cache['ID_' + identity] = hqx(hqx(blockies.create({seed: identity, size: 8, scale: 1}), 4), 4).toDataURL();
+    },
+    identiconDataPixel: function(identity) {
+        var cacheIdp = cache['IDP_' + identity];
+        return cacheIdp ? cacheIdp : cache['IDP_' + identity] = blockies.create({seed: identity, size: 8, scale: 8}).toDataURL();
+    },
+    i18nTextIcon      : function() {
+        return typeof TAPi18n === 'undefined' || TAPi18n.__('elements.identiconHelper') === 'elements.identiconHelper'
+            ? 'This is a security icon, if there\'s any change on the address the resulting icon should be a completelly different one'
+            : TAPi18n.__('elements.identiconHelper');
+    },
 });
