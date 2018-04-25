@@ -1,7 +1,7 @@
 Package.describe({
     name   : 'happyuc:elements',
     summary: 'Basic elements for Dapps',
-    version: '1.2.2',
+    version: '1.2.3',
     git    : 'http://github.com/happyuc-project/meteor-package-elements',
 });
 
